@@ -37,3 +37,78 @@
     text-wrap: balance;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Dual-handle range slider
+ * Two <input type="range"> elements overlap a shared track. The inputs
+ * themselves are pointer-transparent; only the thumbs take pointer events.
+ * ------------------------------------------------------------------------- */
+.lf-range {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 1.5rem;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+.lf-range::-webkit-slider-runnable-track,
+.lf-range::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+.lf-range::-webkit-slider-thumb {
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: #171717;
+  border: 2px solid #f5a623;
+  cursor: grab;
+  box-shadow:
+    0 0 0 1px rgba(245, 166, 35, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.55);
+  transition: transform 0.15s ease;
+}
+.lf-range::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.08);
+}
+.lf-range::-moz-range-thumb {
+  pointer-events: auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: #171717;
+  border: 2px solid #f5a623;
+  cursor: grab;
+  box-shadow:
+    0 0 0 1px rgba(245, 166, 35, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.55);
+  transition: transform 0.15s ease;
+}
+.lf-range::-moz-range-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.08);
+}
+
+/* ---------------------------------------------------------------------------
+ * Wizard step transition
+ * ------------------------------------------------------------------------- */
+@keyframes lf-step-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.lf-animate-step {
+  animation: lf-step-fade-in 0.35s ease-out;
+}
